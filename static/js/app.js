@@ -36,7 +36,7 @@ function buildMetadata(sample) {
     
     // console.log(sample)  
     d3.json(`/samples/<sample>`).then(function (sample_metadata) {
-      console.log(sampleData);
+      console.log(sample_metadata);
     
       const otu_ids = sample_metadata.otu_ids;
       const otu_labels = sample_metadata.otu_labels;
