@@ -1,8 +1,8 @@
 function buildMetadata(sample) {
   // Using `d3.json` to fetch the metadata for a sample
-  // console.log(sample)
-  d3.json(`/metadata/<sample>`).then(function(sampleData) {
-    console.log(sampleData);
+  console.log(sample)
+  d3.json(`/metadata/<sample>`).then(function(sample_metadata) {
+    console.log(sample_metadata);
     
     // Using d3 to select the panel with id of `#sample-metadata`
     var PANEL = d3.select("#sample-metadata");
@@ -12,7 +12,7 @@ function buildMetadata(sample) {
     
     // Using `Object.entries` to add each key and value pair to the panel
     // Using d3 to append new tags for each key-value in the metadata.
-    Object.entries(sampleData).forEach(([key, value]) => {
+    Object.entries(sample_metadata).forEach(([key, value]) => {
       PANEL.append('h6').text(`${key}, ${value}`);
     })
     
@@ -35,12 +35,12 @@ function buildMetadata(sample) {
     // otu_ids, and labels (10 each).
     
     // console.log(sample)  
-    d3.json(`/samples/<sample>`).then(function (sampleData) {
+    d3.json(`/samples/<sample>`).then(function (sample_metadata) {
       console.log(sampleData);
     
-      const otu_ids = sampleData.otu_ids;
-      const otu_labels = sampleData.otu_labels;
-      const sample_values = sampleData.sample_values;
+      const otu_ids = sample_metadata.otu_ids;
+      const otu_labels = sample_metadata.otu_labels;
+      const sample_values = sample_metadata.sample_values;
 
       //Building Bubble chart
       var bubbleData = [{
